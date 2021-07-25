@@ -1,0 +1,56 @@
+
+
+<div class="row flex-row" fxLayout="row">
+   <mat-form-field>
+      <input matInput [(ngModel)]="formName" placeholder="Form Name" />
+    </mat-form-field>
+   </div>
+<div class="row flex-row" fxLayout="row" fxLayoutGap="12px">
+    
+    
+       <mat-card
+       cdkDropList
+       id="formFields"
+       #formFields="cdkDropList"
+       [cdkDropListData]="inputJson"
+       [cdkDropListConnectedTo]="[formBuilderJson]"
+       (cdkDropListDropped)="drop($event,false)"
+       class="list" fxFlex="50" >
+       <mat-card-header>
+         <mat-card-title>Form Fields</mat-card-title>
+       </mat-card-header>
+       <mat-card cdkDrag *ngFor="let val of inputJson">{{val.name}}</mat-card>
+          
+       </mat-card>
+    
+    <div fxFlex="50" >
+       <mat-card
+       cdkDropList
+       id="formBuilderJson"
+       #formBuilderJson="cdkDropList"
+       [cdkDropListData]="builderJson"
+       [cdkDropListConnectedTo]="[formFields]"
+       (cdkDropListDropped)="drop($event,true)"
+       class="list">
+       <mat-card-header>
+               
+         <mat-card-title>Create Form</mat-card-title>
+      
+       </mat-card-header>
+       <p class="empty-label" *ngIf="builderJson.length === 0">Empty</p>
+       <app-core-form [formJson]="builderJson"></app-core-form>
+       </mat-card>
+ <button mat-raised-button color="primary" (click)="saveForm()"  >Save</button>
+
+    </div>
+    
+ </div>
+ <div class="row flex-row my-4" fxLayoutGap="12px" fxLayout="row">
+   <div fxFlex="50" >
+      <app-form-list (emitData)="previewData($event)"></app-form-list>
+      </div>
+   <div fxFlex="50" >
+ <app-form-preview [data]="jsonData" [formId]="formId"></app-form-preview>
+ </div>
+ 
+</div>

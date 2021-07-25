@@ -1,0 +1,33 @@
+[
+{
+    "type":"input",
+    "placeholder":"",
+    "id":"",
+    "class":"",
+    "name":"Input"
+},{
+    "type":"checkbox",
+    "placeholder":"",
+    "id":"",
+    "class":"",
+    "name":"Checkbox"
+},{
+    "type":"radio",
+    "placeholder":"",
+    "id":"",
+    "class":"",
+    "name":"Radio"
+},{
+    "type":"textarea",
+    "placeholder":"",
+    "id":"",
+    "class":"",
+    "name":"Textarea"
+},{
+    "type":"label",
+    "placeholder":"",
+    "id":"",
+    "class":"",
+    "name":"Label"
+}
+]

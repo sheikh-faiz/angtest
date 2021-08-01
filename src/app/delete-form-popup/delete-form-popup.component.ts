@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task, TaskDialogData } from '../task/task';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'; 
 
 @Component({
   selector: 'app-delete-form-popup',
@@ -24,8 +23,8 @@ export class DeleteFormPopupComponent implements OnInit {
   ngOnInit(){
     
   }
-  deleteForm(){
-    console.log(this.data,this.backupTask)
+  deleteForm(){ 
     this.store.collection('form-builder').doc(this.backupTask.id).delete();
+    this.dialogRef.close(this.data);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormJson } from '../models/form.model';
 
 @Component({
   selector: 'app-core-form',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./core-form.component.css']
 })
 export class CoreFormComponent implements OnInit {
-  @Input() formJson;
+  @Input() formJson:FormJson;
   constructor() { }
 
   ngOnInit(): void {

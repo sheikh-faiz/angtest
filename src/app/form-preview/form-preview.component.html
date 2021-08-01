@@ -1,45 +1,55 @@
-
 <mat-card>
   <mat-card-header>
     <mat-card-title>Form Preview and Save Data</mat-card-title>
   </mat-card-header>
-<div class="example-container" *ngIf="data.length>0">
-<form > 
-    <div *ngFor="let v of data;let index = index">
-    <mat-checkbox *ngIf="v.type=='checkbox'" name="dffg" (change)="toggleCheckbox($event,v)" value={{v.fieldValue}}>{{v.text}}</mat-checkbox>
-    <p>
-      <label *ngIf="v.type=='lebel'" >{{v.value}} </label>
-      <mat-radio-group *ngIf="v.type=='radio'" name="dffg" [(ngModel)]="formData[v.uniqueId].value">
-        <mat-radio-button value="auto">Auto</mat-radio-button>
-       
-      </mat-radio-group>
-    </p>
-<p>
-    <mat-form-field *ngIf="v.type=='input'" appearance="fill"
-        [hideRequiredMarker]="hideRequiredControl.value"
-        [floatLabel]="floatLabelControl.value"> 
-      <input matInput placeholder="{{v.value}}" name="dffg" [(ngModel)]="formData[v.uniqueId].value">
-    </mat-form-field>
-</p><p>
-    <mat-form-field *ngIf="v.type=='textarea'" appearance="fill"
-        [hideRequiredMarker]="hideRequiredControl.value"
-        [floatLabel]="floatLabelControl.value"> 
-      <textarea matInput placeholder="{{v.value}}" name="dffg" [(ngModel)]="formData[v.uniqueId].value"></textarea>
-    </mat-form-field>
-</p>
- 
-<p>
-    <mat-form-field *ngIf="v.type=='select'" appearance="fill"
-        [hideRequiredMarker]="hideRequiredControl.value"
-        [floatLabel]="floatLabelControl.value">
-      <mat-select name="dffg" [(ngModel)]="formData[v.uniqueId].value">
-        <mat-option>-- None --</mat-option>
-        <mat-option *ngFor="let optionVal of v.option" value="{{optionVal.value}}">{{optionVal.value}}</mat-option>
-      </mat-select>
-      
-    </mat-form-field>
-    </p>
-    </div>
-    <button mat-raised-button color="primary" (click)="saveData()"  >Save</button>
+  <div class="example-container" *ngIf="data.length > 0">
+    <form>
+      <div *ngFor="let v of data; let index = index">
+        <app-checkbox
+          *ngIf="v.type == 'checkbox'"
+          [fieldValue]="v.fieldValue"
+          [text]="v.value"
+          (toggleCheckbox)="toggleCheckbox($event, v, index)"
+        ></app-checkbox>
+        <p>
+          <label *ngIf="v.type == 'label'">{{ v.value }} </label>
+          <app-radio
+            *ngIf="v.type == 'radio'"
+            [uniqueId]="v.uniqueId"
+            [formData]="formData[index]"
+          ></app-radio>
+        </p>
+        <p>
+          <app-input
+            *ngIf="v.type == 'input'"
+            [placeholder]="v.value"
+            [value]="value"
+            [value]="formData[index][v.uniqueId].value"
+            (setInput)="formData[index][v.uniqueId].value = $event"
+          ></app-input>
+        </p>
+        <p>
+          <app-textarea
+            *ngIf="v.type == 'textarea'"
+            [placeholder]="v.value"
+            [value]="value"
+            [value]="formData[index][v.uniqueId].value"
+            (setInput)="formData[index][v.uniqueId].value = $event"
+          ></app-textarea>
+        </p>
 
-  </form></div></mat-card>
+        <p>
+          <app-select
+            *ngIf="v.type == 'select'"
+            [options]="v.option"
+            [value]="formData[index][v.uniqueId].value"
+            (setInput)="formData[index][v.uniqueId].value = $event"
+          ></app-select>
+        </p>
+      </div>
+      <button mat-raised-button color="primary" (click)="saveData()">
+        Save
+      </button>
+    </form>
+  </div>
+</mat-card>

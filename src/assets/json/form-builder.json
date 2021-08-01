@@ -1,33 +1,59 @@
 [
-{
-    "type":"input",
-    "placeholder":"",
-    "id":"",
-    "class":"",
-    "name":"Input"
-},{
-    "type":"checkbox",
-    "placeholder":"",
-    "id":"",
-    "class":"",
-    "name":"Checkbox"
-},{
-    "type":"radio",
-    "placeholder":"",
-    "id":"",
-    "class":"",
-    "name":"Radio"
-},{
-    "type":"textarea",
-    "placeholder":"",
-    "id":"",
-    "class":"",
-    "name":"Textarea"
-},{
-    "type":"label",
-    "placeholder":"",
-    "id":"",
-    "class":"",
-    "name":"Label"
-}
+    {
+      "type": "input",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Input",
+      "text": "Placeholder",
+      "value": ""
+    },
+    {
+      "type": "select",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Select",
+      "text": "Placeholder",
+      "value": "",
+      "option": []
+    },
+    {
+      "type": "checkbox",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Checkbox",
+      "text": "Checkbox Label",
+      "value": "",
+      "fieldValue": ""
+    },
+    {
+      "type": "radio",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Radio",
+      "text": "Text",
+      "value": "",
+      "fieldValue": ""
+    },
+    {
+      "type": "textarea",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Textarea",
+      "text": "Placeholder",
+      "value": ""
+    },
+    {
+      "type": "label",
+      "placeholder": "",
+      "id": "",
+      "class": "",
+      "name": "Label",
+      "text": "Label",
+      "value": ""
+    }
 ]

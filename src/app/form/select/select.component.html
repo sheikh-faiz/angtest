@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+  <mat-select name="select" [(ngModel)]="value" (keyup)="setInput.emit(value)">
+    <mat-option>-- None --</mat-option>
+    <mat-option *ngFor="let optionVal of options" value="{{ optionVal.value }}"
+      >{{ optionVal.value }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -6,49 +6,46 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from 'src/environments/environment';
-import { TaskComponent } from './task/task.component';
+import { environment } from 'src/environments/environment'; 
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import {MatListModule} from '@angular/material/list';
 import { CoreFormComponent } from './core-form/core-form.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import { FormTextComponent } from './form-text/form-text.component';
+import {MatSelectModule} from '@angular/material/select'; 
 import { FormPreviewComponent } from './form-preview/form-preview.component';
 import { FormListComponent } from './form-list/form-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr'; 
+import { FormFieldsModule } from './form/formfields.module';
+import { DeleteFormPopupComponent } from './delete-form-popup/delete-form-popup.component';
 @NgModule({
   declarations: [
-    AppComponent,
-    TaskDialogComponent,
-    TaskComponent,
+    AppComponent, 
     FormBuilderComponent,
-    CoreFormComponent,
-    FormTextComponent,
+    CoreFormComponent, 
     FormPreviewComponent,
-    FormListComponent
+    FormListComponent,
+    DeleteFormPopupComponent
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     MatInputModule,
-    DragDropModule,
     MatDialogModule ,
     MatButtonModule,
     FormsModule,
@@ -60,7 +57,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatSelectModule,
     FlexLayoutModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormFieldsModule
     
   ],
   providers: [],

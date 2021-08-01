@@ -1,21 +1,31 @@
- <mat-card>
-    <mat-card-header>
-               
-        <mat-card-title>Form List</mat-card-title>
-     
-      </mat-card-header>
- <table>
-     <tr>
-         <th>Form Name</th>
-         <th>Action</th>
-     </tr>
-     <tr *ngFor="let val of formpreview | async">
-         <td>{{val.name}} </td>
-         <td> 
-            <button mat-raised-button color="primary" (click)="Preview(val.data,val.id)">Preview</button> 
-            <button mat-raised-button color="warn" class="mx-2" (click)="deleteForm(val.id)">Delete</button>
-         </td>
-
-     </tr>
- </table>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Form List</mat-card-title>
+  </mat-card-header>
+  <table>
+    <tr>
+      <th>Form Name</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let val of formpreview | async">
+      <td>{{ val.name }}</td>
+      <td>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="Preview(val.data, val.id)"
+        >
+          Preview
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          class="mx-2"
+          (click)="deleteForm(val.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
 </mat-card>

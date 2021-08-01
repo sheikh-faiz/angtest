@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { FormJson } from '../models/form.model';
 import { ApiService } from '../service/api.service';
 
 @Component({
@@ -10,11 +11,10 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./form-preview.component.css'],
 })
 export class FormPreviewComponent implements OnInit, OnChanges {
-  formpreview: any;
   options: FormGroup;
   formData = {};
-  @Input() data = [];
-  @Input() formId;
+  @Input() data: FormJson[] = [];
+  @Input() formId: string;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
   constructor(fb: FormBuilder, private apiService: ApiService) {
@@ -25,21 +25,22 @@ export class FormPreviewComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {}
   saveData() {
-    console.log({ data: this.formData, formId: this.formId });
     this.apiService.addFormData({ data: this.formData, formId: this.formId });
   }
   ngOnChanges() {
-    console.log(this.formData);
-    this.data.forEach((e) => {
-      this.formData[e.uniqueId] = { value: '' };
+    console.log(this.data)
+    this.data.forEach((e, i) => {
+      if (this.formData[i] === undefined) {
+        this.formData[i] = {};
+      }
+      this.formData[i][e.uniqueId] = { value: '' };
     });
   }
-  toggleCheckbox(e, v) {
-    console.log(e);
+  toggleCheckbox(e, v, i) { 
     if (e.checked) {
-      this.formData[v.uniqueId] = v.fieldValue;
+      this.formData[i][v.uniqueId] = v.fieldValue;
     } else {
-      this.formData[v.uniqueId] = '';
+      this.formData[i][v.uniqueId] = '';
     }
     //
   }
